@@ -1,37 +1,127 @@
-//part4
-use rand::Rng;
-use std::io;
 use std::cmp::Ordering;
 
 fn main() {
-    println!("猜数游戏");
-    let secret_number = rand::thread_rng().gen_range(1, 101); //i32 u32 i64
+    let secret_number = 10;
+    let guess = 20;
 
-    loop {
-        println!("猜测一个数");
-        
-        let mut guess = String::new();
-        io::stdin().read_line(&mut guess).expect("无法读取行");
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("请输入一个整数");
-                continue;
-            }
-        };
-
-        println!("你猜测的数是: {}", guess);
-
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("太小了"), //arm
-            Ordering::Greater => println!("太大了"),
-            Ordering::Equal => {
-                println!("猜对了");
-                break;
-            }
-        }
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("guess < secret_number"),
+        Ordering::Greater => println!("guess > secret_number"),
+        Ordering::Equal => println!("guess = secret_number"),
     }
 }
+
+
+// 解析用户输入
+// use std::io;
+
+// fn main() {
+//     loop {
+//         println!("请输入一个整数:>");
+//         let mut guess = String::new();
+//         io::stdin().read_line(&mut guess).expect("无法读取行");
+        
+//         let guess: u32 = match guess.trim().parse() {
+//             Ok(num) => num,
+//             Err(_) => {
+//                 println!("请您输入一个合法的整数!");
+//                 continue;
+//             }
+//         };
+//         println!("解析成功, 输入的数字是: {}", guess);
+//     }
+// }
+
+// 读取用户输入
+// use std::io;
+
+// fn main() {
+//     let mut guess = String::new();
+//     io::stdin().read_line(&mut guess).expect("无法读取行");
+//     println!("输入的内容: {}", guess)
+// }
+
+// 生成神秘数字
+// use rand::Rng;
+
+// fn main() {
+//     let secret_number = rand::thread_rng().gen_range(1, 101);
+//     println!("生成的神秘数字是: {}", secret_number);
+// }
+
+
+// use rand::Rng;
+// use std::io;
+// use std::cmp::Ordering;
+
+// fn main() {
+//     println!("欢迎来到猜数游戏!");
+//     //1、生成神秘数字
+//     let secret_number = rand::thread_rng().gen_range(1, 101);
+//     println!("神秘数字已经生成!");
+
+//     loop {
+//         //2、让用户进行猜测
+//         println!("请猜测:>");
+//         let mut guess = String::new();
+//         io::stdin().read_line(&mut guess).expect("无法读取行");
+
+//         //3、将用户输入的数字字符串转化为整型
+//         let guess: u32 = match guess.trim().parse() {
+//             Ok(num) => num,
+//             Err(_) => {
+//                 println!("请您输入一个合法的整数!");
+//                 continue;
+//             }
+//         };
+
+//         //4、将用户猜测的数与神秘数字进行比较
+//         match guess.cmp(&secret_number) {
+//             Ordering::Less => println!("您猜测的数字太小了"),
+//             Ordering::Greater => println!("您猜测的数字太大了"),
+//             Ordering::Equal => {
+//                 println!("恭喜您猜对了, 神秘数字就是{}!", secret_number);
+//                 break;
+//             }
+//         }
+//     }
+// }
+
+
+//part4
+// use rand::Rng;
+// use std::io;
+// use std::cmp::Ordering;
+
+// fn main() {
+//     println!("猜数游戏");
+//     let secret_number = rand::thread_rng().gen_range(1, 101); //i32 u32 i64
+
+//     loop {
+//         println!("猜测一个数");
+        
+//         let mut guess = String::new();
+//         io::stdin().read_line(&mut guess).expect("无法读取行");
+//         let guess: u32 = match guess.trim().parse() {
+//             Ok(num) => num,
+//             Err(_) => {
+//                 println!("请输入一个整数");
+//                 continue;
+//             }
+//         };
+
+//         println!("你猜测的数是: {}", guess);
+
+//         match guess.cmp(&secret_number) {
+//             Ordering::Less => println!("太小了"), //arm
+//             Ordering::Greater => println!("太大了"),
+//             Ordering::Equal => {
+//                 println!("猜对了");
+//                 break;
+//             }
+//         }
+//     }
+// }
 
 //part3
 // use rand::Rng;
