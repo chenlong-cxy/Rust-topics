@@ -1,9 +1,83 @@
 fn main() {
-    let a = [1, 2, 3, 4, 5];
-    let slice = &a[1..3];
-
-    println!("{:?}", slice);
+    let r = dangle();
 }
+
+fn dangle() -> &String {
+    let s = String::from("hello world");
+    &s //悬垂引用
+}
+
+// fn main() {
+//     let a = (10, String::from("xx"));
+//     let b = a;
+//     println!("{:?}", a);
+//     println!("{:?}", b);
+// }
+
+// fn main() {
+//     let x = String::from("hello");
+//     let y = x.clone(); //深拷贝
+
+//     println!("x = {}", x); //x = hello
+//     println!("y = {}", y); //y = hello
+// }
+
+// fn main() {
+//     let x = String::from("hello");
+//     let y = x;
+
+//     println!("x = {}", x); //error
+//     println!("y = {}", y);
+// }
+
+// fn main() {
+//     let x = 10;
+//     let y = x;
+
+//     println!("x = {}", x); //x = 10
+//     println!("y = {}", y); //y = 10
+// }
+
+// #[derive(Copy, Clone)]
+// struct A {
+//     a: i32,
+// }
+// impl A {
+//     fn new(val: i32) -> A {
+//         A {
+//             a: val,
+//         }
+//     }
+// }
+// // impl Drop for A {
+// //     fn drop(&mut self) {
+// //         println!("A drop...{}", self.a);
+// //     }
+// // }
+// // impl Copy for A {
+    
+// // }
+// fn main() {
+//     let obj = A::new(10);
+//     let tmp = obj.clone();
+//     println!("{}", obj.a);
+//     println!("{}", tmp.a);
+// }
+
+// fn main() {
+//     let mut s1 = String::from("hello");
+//     let s2 = String::from(" world");
+
+//     s1.push_str(&s2);
+//     println!("{}", s1);
+// }
+
+// fn main() {
+//     let a = [1, 2, 3, 4, 5];
+//     let slice = &a[1..3];
+
+//     println!("{:?}", slice);
+// }
 
 // fn main() {
 //     let my_string = String::from("hello world");
