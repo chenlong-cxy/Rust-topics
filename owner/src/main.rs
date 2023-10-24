@@ -1,11 +1,57 @@
 fn main() {
-    let r = dangle();
+    let my_string = String::from("hello world");
+    let word = first_word(&my_string); //&my_string等价于&my_string[..]
+
+    let my_string_literal = "hello world";
+    let word = first_word(my_string_literal); //传递&str
 }
 
-fn dangle() -> &String {
-    let s = String::from("hello world");
-    &s //悬垂引用
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..i];
+        }
+    }
+    &s[..]
 }
+
+// fn main() {
+//     let mut a = String::from("hello");
+//     let b = &a[0..2];
+//     a.push_str("xx");
+//     println!("{}", a);
+//     println!("{}", b);
+// }
+
+// fn main() {
+//     let s = String::from("hello world");
+//     let word = first_word(&s);
+
+//     //s.clear(); //error
+//     println!("word = {}", word); //word = hello
+// }
+
+// fn first_word(s: &String) -> &str {
+//     let bytes = s.as_bytes();
+
+//     for (i, &item) in bytes.iter().enumerate() {
+//         if item == b' ' {
+//             return &s[..i];
+//         }
+//     }
+//     &s[..]
+// }
+
+// fn main() {
+//     let r = dangle();
+// }
+
+// fn dangle() -> &String {
+//     let s = String::from("hello world");
+//     &s //悬垂引用
+// }
 
 // fn main() {
 //     let a = (10, String::from("xx"));
